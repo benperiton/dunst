@@ -210,7 +210,7 @@ void notification_open_url(struct notification *n);
 
 /**
  * Open the context menu for the notification.
- * 
+ *
  * Convenience function that creates the GList and passes it to context_menu_for().
  */
 void notification_open_context_menu(struct notification *n);

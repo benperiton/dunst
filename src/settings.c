@@ -346,6 +346,12 @@ void load_settings(char *cmdline_config_path)
                 "Max amount of notifications kept in history"
         );
 
+        settings.max_chars = option_get_int(
+                "global",
+                "max_chars", "-max_chars", DUNST_NOTIF_MAX_CHARS,
+                "Max number of chars in a notification."
+        );
+
         settings.show_indicators = option_get_bool(
                 "global",
                 "show_indicators", "-show_indicators", defaults.show_indicators,

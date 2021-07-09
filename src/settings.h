@@ -73,6 +73,7 @@ struct settings {
         int history_length;
         int show_indicators;
         int word_wrap;
+        unsigned int max_chars;
         int ignore_dbusclose;
         enum ellipsize ellipsize;
         int ignore_newline;

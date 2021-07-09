@@ -459,6 +459,15 @@ void notification_init(struct notification *n)
                 n->body = string_append(n->body, msg, "\n");
         }
 
+        /* truncate the body */
+        if (settings.max_chars > 0) {
+                if (strnlen(n->body, settings.max_chars + 1) > settings.max_chars) {
+                        char * buffer = string_append(g_strndup(n->body, settings.max_chars), "...", NULL);
+                        g_free(n->body);
+                        n->body = buffer;
+                }
+        }
+
         /* UPDATE derived fields */
         notification_extract_urls(n);
         notification_format_message(n);
@@ -651,7 +660,7 @@ void notification_update_text_to_render(struct notification *n)
 void notification_do_action(struct notification *n)
 {
         assert(n->default_action_name);
-        
+
         if (g_hash_table_size(n->actions)) {
                 if (g_hash_table_contains(n->actions, n->default_action_name)) {
                         signal_action_invoked(n, n->default_action_name);

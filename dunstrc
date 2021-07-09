@@ -31,6 +31,9 @@
     # screen width minus the width defined in within the geometry option.
     geometry = "300x5-30+20"
 
+    # The max number of characters in the notification body.
+    max_chars = 50000
+
     # Turn on the progess bar
     progress_bar = true
 
